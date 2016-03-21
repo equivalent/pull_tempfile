@@ -21,7 +21,7 @@ Or install it yourself as:
 
 ## Usage
 
-```
+```ruby
 class Medium < ActiveRecord::Base
   has_attached_file :file
 
@@ -48,7 +48,7 @@ end
 Transaction will automatically delete (`unlink`) the temporary file after block
 finish. If you want to keep the tmp file for longer you can use:
 
-```
+```ruby
 file = PullTempfile.pull_tempfile(url: url, original_filename: original_filename)
 # ...
 file.unlink # delete file
@@ -137,7 +137,7 @@ Run `bundle install`
 
 Next create new file `./lib/s3_helper.rb`
 
-```
+```ruby
 require 'httparty'      # gem
 module S3Helper
   def pull_asset(url:, destination:)
