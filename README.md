@@ -1,5 +1,7 @@
 # PullTempfile
 
+[![Build Status](https://travis-ci.org/equivalent/pull_tempfile.svg?branch=master)](https://travis-ci.org/equivalent/pull_tempfile)
+
 ## Installation
 
 Add this line to your application's Gemfile:
