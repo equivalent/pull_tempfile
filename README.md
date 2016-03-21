@@ -3,6 +3,8 @@
 [![Build Status](https://travis-ci.org/equivalent/pull_tempfile.svg?branch=master)](https://travis-ci.org/equivalent/pull_tempfile)
 [![Code Climate](https://codeclimate.com/github/equivalent/pull_tempfile/badges/gpa.svg)](https://codeclimate.com/github/equivalent/pull_tempfile)
 
+Simple way how to download file from url to temporary file. (Please reade more on "why" you would need to do this bellow)
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -21,19 +23,43 @@ Or install it yourself as:
 
 ## Usage
 
+
+#### Simplest example
+
 ```ruby
+require 'pull_tempfile'
+
+original_filename = 'no idea.png'
+url = 'http://www.eq8.eu/no-idea.png'
+
+file = PullTempfile.pull_tempfile(url: url, original_filename: original_filename)
+file.unlink # delete file after you done
+
+# ...or
+
+PullTempfile.transaction(url: url, original_filename: original_filename) do |tmp_file|
+  puts tmp_file.path
+  # ...
+end
+```
+
+`transaction` will automatically delete (`unlink`) the temporary file after block
+finish.
+
+#### Paperclip & Rails
+
+```ruby
+require 'pull_tempfile'
+
 class Medium < ActiveRecord::Base
   has_attached_file :file
 
   # ...
 end
 
-require 'pull_tempfile'
-
 # when used as "AWS S3 browser upload" you can fetch original filename as "${filename}" metadata
 # or use some different way to determine the file name.
 original_filename = 'no idea.png'
-
 url = 'http://www.eq8.eu/no-idea.png'
 
 medium = Media.new
@@ -42,18 +68,7 @@ PullTempfile.transaction(url: url, original_filename: original_filename) do |tmp
   medium.file = tmp_file
   medium.save!
 end
-
 ```
-
-Transaction will automatically delete (`unlink`) the temporary file after block
-finish. If you want to keep the tmp file for longer you can use:
-
-```ruby
-file = PullTempfile.pull_tempfile(url: url, original_filename: original_filename)
-# ...
-file.unlink # delete file
-```
-
 
 ## License
 
