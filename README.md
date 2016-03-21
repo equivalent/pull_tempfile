@@ -1,6 +1,7 @@
 # PullTempfile
 
 [![Build Status](https://travis-ci.org/equivalent/pull_tempfile.svg?branch=master)](https://travis-ci.org/equivalent/pull_tempfile)
+[![Code Climate](https://codeclimate.com/github/equivalent/pull_tempfile/badges/gpa.svg)](https://codeclimate.com/github/equivalent/pull_tempfile)
 
 ## Installation
 
