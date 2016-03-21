@@ -32,7 +32,9 @@ require 'pull_tempfile'
 
 # when used as "AWS S3 browser upload" you can fetch original filename as "${filename}" metadata
 # or use some different way to determine the file name.
-original_filename = 'my face.jpg'
+original_filename = 'no idea.png'
+
+url = 'http://www.eq8.eu/no-idea.png'
 
 medium = Media.new
 
