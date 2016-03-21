@@ -159,4 +159,4 @@ user.save!
 
 But the problem is that you need to delete this file manually. So why
 not to take advantage of Ruby `Tempfile`. This is exactly what this gem
-is doing. Have a look on the Source code  https://github.com/equivalent/pull_tempfile 
+is doing. Have a look on the Source code  https://github.com/equivalent/pull_tempfile/blob/master/lib/pull_tempfile.rb
