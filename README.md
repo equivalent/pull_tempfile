@@ -5,6 +5,8 @@
 
 Simple way how to download file from url to temporary file. (Please read more on "why"  would you need to do this down bellow)
 
+Gem has no runtime gem dependancies (just standard Ruby lib) and it's really lightweight.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -77,7 +79,19 @@ The gem is available as open source under the terms of the [MIT License](http://
 
 ## Reason why this Gem exist:
 
-When you using gem like [paperclip](https://github.com/thoughtbot/paperclip) `> 3.1.4` you can do something like this to pull file from url:
+This gem is trying to be usecase agnostic. For example you can use
+it to download CSV report and parse it and the CSV will automatically be
+deleted:
+
+```ruby
+PullTempfile.transaction(url: https://mycompany.org/stupid-csv-report.csv, original_filename: 'dont-care.csv') do |tmp_file|
+  CSV.foreach(tmp_file.path) do |row|
+    # ....
+  end
+end
+```
+
+But main reason for it's  existence is that when you using gem [paperclip](https://github.com/thoughtbot/paperclip) `> 3.1.4` you can do something like this to pull file from url:
 
 ```ruby
 class User < ActiveRecord::Base
