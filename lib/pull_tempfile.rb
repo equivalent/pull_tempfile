@@ -1,10 +1,32 @@
-require 'httparty'     # gem
-require 'pathname'     # standard Ruby lib
-require 'tempfile'     # standard Ruby lib
+require 'uri'
+require 'net/http'
+require 'pathname'
+require 'tempfile'
 
 require "pull_tempfile/version"
 
 module PullTempfile
+  class Config
+    attr_writer :puller
+
+    def puller
+      @puller ||= ->(url){ Net::HTTP.get(URI.parse(url)) }
+    end
+  end
+
+  def self.config
+    @config ||= Config.new
+  end
+
+  # To use differnt puller you can do
+  #
+  #     require 'httparty'
+  #     PullTempfile.config.puller = ->(url){ HTTParty.get(url).parsed_response }
+  #
+  def self.puller
+    config.puller
+  end
+
   # Creates Temporary file
   #
   #     file = PullTempfile.pull_tempfile(original_filename: "image asset.jpg", url: 'http://..../uaoeuoeueoauoueao' )
@@ -24,7 +46,7 @@ module PullTempfile
 
     file = Tempfile.new([tmp_file_name, extension])
     file.binmode
-    file.write(HTTParty.get(url).parsed_response)
+    file.write(puller.call(url))
     file.close
     file
   end
