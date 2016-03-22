@@ -84,7 +84,7 @@ it to download CSV report and parse it and the CSV will automatically be
 deleted:
 
 ```ruby
-PullTempfile.transaction(url: https://mycompany.org/stupid-csv-report.csv, original_filename: 'dont-care.csv') do |tmp_file|
+PullTempfile.transaction(url: 'https://mycompany.org/stupid-csv-report.csv', original_filename: 'dont-care.csv') do |tmp_file|
   CSV.foreach(tmp_file.path) do |row|
     # ....
   end
