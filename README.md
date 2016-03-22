@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/equivalent/pull_tempfile.svg?branch=master)](https://travis-ci.org/equivalent/pull_tempfile)
 [![Code Climate](https://codeclimate.com/github/equivalent/pull_tempfile/badges/gpa.svg)](https://codeclimate.com/github/equivalent/pull_tempfile)
 
-Simple way how to download file from url to temporary file. (Please reade more on "why" you would need to do this bellow)
+Simple way how to download file from url to temporary file. (Please read more on "why"  would you need to do this down bellow)
 
 ## Installation
 
