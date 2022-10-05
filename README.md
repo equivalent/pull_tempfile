@@ -32,7 +32,7 @@ Or install it yourself as:
 require 'pull_tempfile'
 
 original_filename = 'no idea.png'
-url = 'http://www.eq8.eu/no-idea.png'
+url = 'https://meme.eq8.eu/noidea.jpg'
 
 file = PullTempfile.pull_tempfile(url: url, original_filename: original_filename)
 file.unlink # delete file after you done
@@ -62,7 +62,7 @@ end
 # when used as "AWS S3 browser upload" you can fetch original filename as "${filename}" metadata
 # or use some different way to determine the file name.
 original_filename = 'no idea.png'
-url = 'http://www.eq8.eu/no-idea.png'
+url = 'https://meme.eq8.eu/noidea.jpg'
 
 medium = Media.new
 
