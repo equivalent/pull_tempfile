@@ -72,6 +72,12 @@ PullTempfile.transaction(url: url, original_filename: original_filename) do |tmp
 end
 ```
 
+## Use HTTParty
+
+```
+PullTempfile.config.puller = ->(url){ HTTParty.get(url) }
+```
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
